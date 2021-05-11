@@ -25,8 +25,11 @@ Or install it yourself as:
 In order to calculate compound interest, add this lines to your project:
 ```ruby
 require "compound_interest"
-
+```
+```ruby
 compound_interest = CompoundInterest::Calculation
+```
+```ruby
 compound_interest.calculate(params)
 ```
 method .calculate accept Hash like this:
