@@ -1,5 +1,8 @@
+require: rubocop-rake
+
 AllCops:
   TargetRubyVersion:                  2.5
+  NewCops: enable
 
 Style/StringLiterals:
   Enabled:                            true
@@ -8,7 +11,7 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled:                            true
   EnforcedStyle:                      double_quotes
-  
+
 Style/Documentation:
   Enabled:                            false
 

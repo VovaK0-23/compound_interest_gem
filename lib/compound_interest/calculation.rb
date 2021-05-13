@@ -21,7 +21,7 @@ module CompoundInterest
 
     def self.result
       result = @initial_payment * compound_interest_formula
-      result = result + periodical_payment_calculation - @payment if @payment.positive?
+      result = periodical_payment_calculation if @payment.positive?
       result
     end
 
@@ -29,14 +29,18 @@ module CompoundInterest
       times = (@payment_periodicity * @term).to_i
       payment_result = 0
       (1..times).each do |i|
-        payment_result += @payment * compound_interest_formula -
-                          ((@capitalization_periodicity / @payment_periodicity) * i)
+        payment_result += @payment * compound_interest_formula(i)
       end
       payment_result
     end
 
-    def self.compound_interest_formula
-      (1.0 + @interest_rate / @capitalization_periodicity)**(@term * @capitalization_periodicity)
+    def self.compound_interest_formula(num = 0)
+      if num.zero?
+        (1.0 + @interest_rate / @capitalization_periodicity)**(@term * @capitalization_periodicity)
+      else
+        (1.0 + @interest_rate / @capitalization_periodicity)**((@term * @capitalization_periodicity) -
+            (@capitalization_periodicity / @payment_periodicity * num))
+      end
     end
 
     def self.raise_error(params)
