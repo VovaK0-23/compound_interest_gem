@@ -21,7 +21,7 @@ RSpec.describe CompoundInterest::Calculation do
                                                        interest_rate: 10.0,
                                                        payment: 100,
                                                        payment_periodicity: 12
-                                                     })).to eq(2650.9774034389)
+                                                     })).to eq(2644.691536506721)
     end
     it "work without :payment" do
       expect(CompoundInterest::Calculation.calculate({
